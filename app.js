@@ -9,6 +9,9 @@ connectDb();
 const genreRoutes = require("./routes/genresRoutes");
 app.use("/genres", genreRoutes);
 
+const booksRoutes = require("./routes/booksRoutes");
+app.use("/books", booksRoutes);
+
 const errorHandler = require('./middlewares/errorHandler');
 app.use(errorHandler);
 
