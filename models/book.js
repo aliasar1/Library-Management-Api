@@ -9,11 +9,13 @@ const bookSchema =  mongoose.model('Book', new mongoose.Schema({
             minlength: 5,
             maxlength: 255
         },
-        genre: { 
-            type: mongoose.Schema.Types.ObjectId,  
-            ref: 'Genre',
-            required: true
-        },
+        genres: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Genre',
+                required: true
+            }
+        ],
         numberInStock: { 
             type: Number, 
             required: true,
