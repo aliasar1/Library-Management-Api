@@ -6,6 +6,9 @@ const app = express();
 app.use(express.json());
 connectDb();
 
+const userRoutes = require("./routes/adminRoutes");
+app.use("/admin", userRoutes);
+
 const genreRoutes = require("./routes/genresRoutes");
 app.use("/genres", genreRoutes);
 
