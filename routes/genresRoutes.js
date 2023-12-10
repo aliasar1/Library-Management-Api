@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const { getAllGenres, getGenre, addGenre, updateGenre, deleteGenre } = require('../controllers/genreController');
+const validateToken = require('../middlewares/validateTokenHandler');
 
-router.get('/', getAllGenres);
+router.get('/',  validateToken, getAllGenres);
 
-router.get('/:id', getGenre);
+router.get('/:id', validateToken, getGenre);
 
-router.post('/', addGenre);
+router.post('/', validateToken, addGenre);
 
-router.put('/:id', updateGenre);
+router.put('/:id', validateToken, updateGenre);
 
-router.delete('/:id', deleteGenre);
+router.delete('/:id', validateToken, deleteGenre);
 
 module.exports = router;

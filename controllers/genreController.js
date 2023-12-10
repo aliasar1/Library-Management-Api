@@ -15,13 +15,22 @@ const getGenre = asyncHandler(async(req, res) => {
     res.status(200).json(genre);
 });
 
-const addGenre = asyncHandler(async(req, res) => {
+const addGenre = asyncHandler(async (req, res) => {
     const { name } = req.body;
-    if(!name){
+
+    if (!name) {
         res.status(400);
         throw new Error("All fields are mandatory.");
     }
-    const genre = new Genre({name});
+
+    const existingGenre = await Genre.findOne({ name: { $regex: new RegExp("^" + name + "$", "i") } });
+
+    if (existingGenre) {
+        res.status(400);
+        throw new Error("Genre with the same name already exists.");
+    }
+
+    const genre = new Genre({ name });
     await genre.save();
     res.status(200).json(genre);
 });
