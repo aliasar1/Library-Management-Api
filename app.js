@@ -15,6 +15,9 @@ app.use("/genres", genreRoutes);
 const booksRoutes = require("./routes/booksRoutes");
 app.use("/books", booksRoutes);
 
+const customerRoutes = require("./routes/customersRoutes");
+app.use("/customers", customerRoutes);
+
 const errorHandler = require('./middlewares/errorHandler');
 app.use(errorHandler);
 

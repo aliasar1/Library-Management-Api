@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { genreSchema } = require('./genre');
 
 const bookSchema =  mongoose.model('Book', new mongoose.Schema({
         title: {
