@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const { calculateRentalRate } = require('../utils/helpers');
 const Return = require('../models/return');
 const Book = require('../models/book');
 const Customer = require('../models/customer');
@@ -77,12 +78,6 @@ const getCustomerReturnedBooks = asyncHandler(async (req, res) => {
     res.status(200).json({ returnedBooks });
 });
 
-const calculateRentalRate = (weeklyRentalRate, customerCreatedAt) => {
-    const weeksSinceRegistration = Math.ceil((Date.now() - customerCreatedAt.getTime()) / (7 * 24 * 60 * 60 * 1000));
 
-    const rentalRate = weeklyRentalRate * weeksSinceRegistration;
-
-    return rentalRate;
-};
 
 module.exports = { returnBook, getAllReturnedBooks, getCustomerReturnedBooks };
