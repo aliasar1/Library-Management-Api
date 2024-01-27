@@ -21,6 +21,9 @@ app.use("/customers", customerRoutes);
 const issueRoutes = require("./routes/issuesRoutes");
 app.use("/issues", issueRoutes);
 
+const returnRoutes = require("./routes/returnRoutes");
+app.use("/returns", returnRoutes);
+
 const errorHandler = require('./middlewares/errorHandler');
 app.use(errorHandler);
 
